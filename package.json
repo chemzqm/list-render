@@ -1,0 +1,46 @@
+{
+  "name": "list-render",
+  "version": "0.0.1",
+  "description": "low level reactive list component",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chemzqm/list-render.git"
+  },
+  "keywords": [
+    "list",
+    "reactive"
+  ],
+  "author": "chemzqm@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chemzqm/list-render/issues"
+  },
+  "homepage": "https://github.com/chemzqm/list-render#readme",
+  "devDependencies": {
+    "component-query": "0.0.3",
+    "connect-livereload": "^0.5.3",
+    "gulp": "^3.9.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-serve": "^1.2.0",
+    "gulp-util": "^3.0.7",
+    "html-loader": "^0.3.0",
+    "json-loader": "^0.5.3",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.1"
+  },
+  "dependencies": {
+    "domify": "^1.4.0",
+    "model-component": "^1.1.6",
+    "reactive-lite": "^0.4.3",
+    "uid": "0.0.2"
+  },
+  "browser": {
+    "model": "model-component",
+    "reactive": "reactive-lite",
+    "query": "component-query"
+  }
+}

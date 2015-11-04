@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>list-render</title>
+  <style>
+    *, *:before, *:after {
+      box-sizing: border-box;
+    }
+    ul, li {
+      margin: 0px;
+      padding: 0px;
+    }
+    body {
+      font: 14px Helvetica;
+      padding: 0px;
+    }
+    .container {
+      width: 380px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .scrollable {
+      height: 400px;
+      width: 100%;
+      overflow-y: auto
+    }
+    ul, li {
+      margin: 0px;
+    }
+    ul > li{
+      list-style: none;
+      border-bottom: 1px solid #ddd;
+      padding: 15px;
+    }
+    li > div {
+      margin: 10px
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <form id="form">
+      <section>
+        sort:
+        <select name="sort" id="sort" on-change="sort">
+          <option value="">-</option>
+          <option value="name">name</option>
+          <option value="age">age</option>
+        </select>
+        <select name="direction" on-change="sort" id="direction">
+          <option value="1">desc</option>
+          <option value="-1">asc</option>
+        </select>
+      </section>
+      <section>
+        filter:
+        <select name="filter" on-change="filter" id="filter">
+          <option value="name">name</option>
+          <option value="address">address</option>
+        </select>
+        <input type="text" name="name" id="filter_input" on-input="filter" />
+      </section>
+      <section>
+        <button type="button" id="prepend" on-click="prepend">prepend</button>
+        <span id="count"></span>
+      </section>
+    </form>
+    <div class="scrollable">
+      <ul id="users">
+        <li>
+        <div><strong>{name}</strong> {age} <div date-ymd="date" style="float:right;"></div></div>
+          <div>{address | truncate 30}</div>
+          <div>
+            <button on-click="remove">remove</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <footer>
+  <script src="./bundle.js"></script>
+  </footer>
+</body>
+</html>
