@@ -59,7 +59,7 @@ ListRender.prototype.setData = function (array) {
  */
 ListRender.prototype.more = function (max) {
   var l = this.data.length
-  if (this.curr == l) return false
+  if (this.curr >= l) return false 
   var from = this.curr
   var to = Math.min(from + max, l)
   this.curr = to
@@ -133,7 +133,7 @@ ListRender.prototype.filterData = function (field, val) {
   if (typeof val === 'function') {
     fn = val
   } else if (typeof val === 'string') {
-    val = val.replace(/\s+/,'').split(/\s*/g).join('.*')
+    val = val.replace('\\','\\\\').replace(/\s+/,'').split(/\s*/g).join('.*')
     var re = new RegExp(val, 'i')
     fn = function (o) {
       return re.test(String(o[field]))
