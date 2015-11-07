@@ -57,7 +57,7 @@ list.setData(users)
 
 ### .renderRange(start, [end])
 
-  Empty the exist list, and render the specific range of internal data array (no option.limit restrict)
+  Empty the exist list, and render the specific range of internal data array (no option.limit restrict, end is exclude)
 
 ### .filterData(field, val | function)
 
@@ -71,9 +71,9 @@ list.setData(users)
   and method (`string` or `number`, or a sort function for javascript array),
   if no method, it guess the method by field value, render them limit by `option.limit`
 
-### .findReactive(el)
+### .findModel(el)
 
-  Find a specific reactive instance related by element, useful for event delegate
+  Find a specific model instance related by element, useful for event delegate
 
 ### .remove()
 
