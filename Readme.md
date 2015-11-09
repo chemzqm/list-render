@@ -4,7 +4,8 @@
 [![Dependency Status](https://david-dm.org/chemzqm/list-render.svg)](https://david-dm.org/chemzqm/list-render)
 [![Coverage Status](https://coveralls.io/repos/chemzqm/list-render/badge.svg?branch=master&service=github)](https://coveralls.io/github/chemzqm/list-render?branch=master)
 
-  Basic list view for high level component use,(eg: [more-list](), [exgrid]())
+  Basic list view for high level component use,(eg: [more-list](), [exgrid]()), not works right now
+  :disappointed:
 
   This component does not contain any event or loading method, but limited for dom operation.
 
@@ -81,4 +82,4 @@ list.setData(users)
 
   Each created model would have `remove()` method, which remove associate `reactive` (including remove node, unbind change events).
   If remove exist on model, this function would append to origin remove and replace it.
-  If exist remove method return promise(eg: ajax request), this function would not be called when rejected.
+  If exist remove method return promise(eg: ajax request), this function would not be called when rejected or resolved as false.
