@@ -65,8 +65,8 @@ module.exports = function(config) {
         preLoaders: [
           // instrument only testing sources with Istanbul
           {
-            test: /\.js$/,
-            include: path.resolve('lib/'),
+            test: /index\.js$/,
+            exclude: [path.resolve('node_modules/'), 'example', 'test'],
             loader: 'istanbul-instrumenter'
           }
         ]
