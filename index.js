@@ -103,7 +103,6 @@ ListRender.prototype.prependData = function (array) {
  *
  * @param {Number} start
  * @param {Number}  [end]
- * @return {undefined}
  * @api public
  */
 ListRender.prototype.renderRange = function (start, end) {
