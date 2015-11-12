@@ -2,6 +2,7 @@ var Model = require('model')
 var Reactive = require('reactive')
 var domify = require('domify')
 var uid = require('uid')
+var body = document.body
 
 /**
  * Cteate ListRender
@@ -197,7 +198,6 @@ ListRender.prototype.sortData = function (field, dir, method) {
  * @return {reactive}
  * @api public
  */
-var body = document.body
 ListRender.prototype.findModel = function (el) {
   do {
     if (el.parentNode === this.parentNode) break
