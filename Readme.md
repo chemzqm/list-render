@@ -83,3 +83,7 @@ list.setData(users)
   Each created model would have `remove()` method, which remove associate `reactive` (including remove node, unbind change events).
   If remove exist on model, this function would append to origin remove and replace it.
   If exist remove method return promise(eg: ajax request), this function would not be called when rejected or resolved as false.
+
+### onchange(isRemove)
+
+Interface that called when dom change, isRemove is true when called after model remove
