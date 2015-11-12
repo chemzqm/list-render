@@ -395,9 +395,40 @@ describe('.sortData()', function() {
       if (prev) assert(user.name < prev)
     }
   })
+
+  it('should sort data and render current page', function () {
+    list = List(template, parentNode, {
+      perpage: 10,
+      limit: 5
+    })
+    list.setData(USERS)
+    list.select(1)
+    list.sortData('age', 1, 'number')
+    var lis = parentNode.children
+    assert.equal(lis.length, 5)
+    var maxAge = getValue(lis[0], 'age')
+    list.select(0)
+    lis = parentNode.children
+    for (var i = 0, l = lis.length; i < l; i++) {
+      var age = getValue(lis[i], 'age')
+      assert(age >= maxAge)
+    }
+  })
 })
 
 describe('paging', function() {
+  it('shoud throw if perpage not defined for paging', function () {
+    var err
+    try {
+      list = List(template, parentNode)
+      list.setData(USERS)
+      list.select(1)
+    } catch (e) {
+      err = e
+    }
+    assert(!!err.message)
+  })
+
   it('should select page by page number', function () {
     list = List(template, parentNode, {
       perpage: 5,

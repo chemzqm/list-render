@@ -189,7 +189,11 @@ ListRender.prototype.sortData = function (field, dir, method) {
     }
     return (a < b ? 1 : -1) * dir
   })
-  this.renderRange(0, this.limit)
+  if (this.perpage) {
+    this.select(this.curpage)
+  } else {
+    this.renderRange(0, this.limit)
+  }
 }
 
 /**
@@ -288,9 +292,7 @@ ListRender.prototype.appendRemove = function (model, reactive) {
   var fn = function (res) {
     if (res === false) return
     self.removeDataById(id)
-    if (self.curr > 0) {
-      self.curr = self.curr - 1
-    }
+    self.curr = Math.max(0, self.curr - 1)
     reactive.remove()
     self.onchange(true)
     self.more(1)
