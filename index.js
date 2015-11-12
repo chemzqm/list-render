@@ -15,6 +15,7 @@ var body = document.body
  * `option.filters` filters object for [reactive]
  * `option.model` model class used for generate model
  * `option.limit` the limit number for render when `setData()` (default Infinity)
+ * `option.perpage` the limit number for paging, should >= limit
  * `option.empty` String or Element rendered in parentNode when internal data list is empty
  *
  * @param  {Element}  el
@@ -31,6 +32,7 @@ function ListRender(el, parentNode, option) {
     this.emptyEl = typeof empty === 'string' ? domify(empty) : empty
     delete option.empty
   }
+  this.curpage = 0
   this.curr = 0
   this.parentNode = parentNode
   this.el = el
@@ -109,10 +111,9 @@ ListRender.prototype.prependData = function (array) {
 ListRender.prototype.renderRange = function (start, end) {
   this.clean()
   var list = this.filtered || this.data
+  this.curr= end = Math.min(list.length, end)
   var arr = list.slice(start, end)
-  var l = arr.length
-  this.curr = Math.min(start + l, end)
-  if (l === 0) {
+  if (arr.length === 0) {
     return this.empty(true)
   }
   this.empty(false)
@@ -384,6 +385,41 @@ ListRender.prototype.createFragment = function (arr) {
     fragment.appendChild(reactive.el)
   }, this)
   return fragment
+}
+
+/**
+ * Select page by page number
+ *
+ * @param  {Number}  n
+ * @api public
+ */
+ListRender.prototype.select = function (n) {
+  if (!this.perpage) throw new Error('perpage required in option')
+  var s = n*this.perpage
+  var e = (n + 1)*this.perpage
+  e = Math.min(e, s + this.limit)
+  this.curpage = n
+  this.renderRange(s, e)
+}
+
+/**
+ * Show previous page
+ *
+ * @api public
+ */
+ListRender.prototype.prev = function () {
+  this.select(Math.max(0, this.curpage - 1))
+}
+
+/**
+ * Show next page
+ *
+ * @api public
+ */
+ListRender.prototype.next = function () {
+  var list = this.filtered || this.data
+  var max = Math.ceil(list.length/this.perpage) -1
+  this.select(Math.min(max, this.curpage + 1))
 }
 
 /**

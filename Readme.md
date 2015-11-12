@@ -35,6 +35,7 @@ list.setData(users)
 * `option.filters` filters object for [reactive]()
 * `option.model` [model]() class used for generate model
 * `option.limit` the limit number for render when `setData()` (default no limit)
+* `option.perpage` used for paging should >= option.limit
 * `option.empty` String or Element rendered in parentNode when internal data list is empty
 
 ### .setData(array)
@@ -77,6 +78,8 @@ list.setData(users)
 ### .remove()
 
   Remove the list elements, unbind all reactives and models created inside.
+
+### .select(n)
 
 ### model.remove()
 

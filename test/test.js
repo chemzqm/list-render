@@ -397,6 +397,57 @@ describe('.sortData()', function() {
   })
 })
 
+describe('paging', function() {
+  it('should select page by page number', function () {
+    list = List(template, parentNode, {
+      perpage: 5,
+      limit: 5
+    })
+    list.setData(USERS)
+    list.select(1)
+    var lis = parentNode.children
+    assert.equal(lis.length, 5)
+    for (var i = 0, l = lis.length; i < l; i++) {
+      var li = lis[i]
+      var id = getValue(li, 'id')
+      assert.equal(id, USERS[5 + i]._id)
+    }
+  })
+
+  it('should select prev page', function () {
+    list = List(template, parentNode, {
+      perpage: 5,
+      limit: 5
+    })
+    list.setData(USERS)
+    list.select(2)
+    list.prev()
+    var lis = parentNode.children
+    assert.equal(lis.length, 5)
+    for (var i = 0, l = lis.length; i < l; i++) {
+      var li = lis[i]
+      var id = getValue(li, 'id')
+      assert.equal(id, USERS[5 + i]._id)
+    }
+  })
+
+  it('should select next page', function () {
+    list = List(template, parentNode, {
+      perpage: 5,
+      limit: 5
+    })
+    list.setData(USERS)
+    list.next()
+    var lis = parentNode.children
+    assert.equal(lis.length, 5)
+    for (var i = 0, l = lis.length; i < l; i++) {
+      var li = lis[i]
+      var id = getValue(li, 'id')
+      assert.equal(id, USERS[5 + i]._id)
+    }
+  })
+})
+
 describe('.findModel(el)', function() {
   it('should return null when can\'t find', function () {
     list = List(template, parentNode)
