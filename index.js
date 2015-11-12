@@ -67,6 +67,7 @@ ListRender.prototype.more = function (max) {
   var arr = list.slice(from ,to)
   var fragment = this.createFragment(arr)
   this.parentNode.appendChild(fragment)
+  this.onchange()
   return true
 }
 /**
@@ -80,6 +81,7 @@ ListRender.prototype.appendData = function (array) {
   var fragment = this.createFragment(array)
   this.parentNode.appendChild(fragment)
   this.curr = this.curr + array.length
+  this.onchange()
 }
 /**
  * Prepend more data and render them, no refresh
@@ -92,6 +94,7 @@ ListRender.prototype.prependData = function (array) {
   var fragment = this.createFragment(array)
   prepend(this.parentNode, fragment)
   this.curr = this.curr + array.length
+  this.onchange()
 }
 
 /**
@@ -115,6 +118,7 @@ ListRender.prototype.renderRange = function (start, end) {
   this.empty(false)
   var fragment = this.createFragment(arr)
   this.parentNode.appendChild(fragment)
+  this.onchange()
 }
 /**
  * Filter the internal data with `field` and `val` (or function used for array.filter), and render them limit by `option.limit`
@@ -228,6 +232,7 @@ ListRender.prototype.empty = function (show) {
   if (!el) return
   if (show) {
     this.parentNode.appendChild(el)
+    this.onchange()
   } else if (el.parentNode) {
     this.parentNode.removeChild(el)
   }
@@ -287,6 +292,7 @@ ListRender.prototype.appendRemove = function (model, reactive) {
       self.curr = self.curr - 1
     }
     reactive.remove()
+    self.onchange(true)
     self.more(1)
   }
   if (orig && typeof orig !== 'function') throw new TypeError('remove is not a function on model')
@@ -379,6 +385,14 @@ ListRender.prototype.createFragment = function (arr) {
     fragment.appendChild(reactive.el)
   }, this)
   return fragment
+}
+
+/**
+ * Interface for extra action after dom changed
+ *
+ * @api private
+ */
+ListRender.prototype.onchange = function (isRemove) { // eslint-disable-line
 }
 
 /**
