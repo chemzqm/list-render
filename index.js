@@ -61,12 +61,12 @@ ListRender.prototype.setData = function (array) {
  * @api public
  */
 ListRender.prototype.more = function (max) {
-  var l = this.data.length
+  var list = this.filtered || this.data
+  var l = list.length
   if (this.curr >= l) return false
   var from = this.curr
   var to = Math.min(from + max, l)
   this.curr = to
-  var list = this.filtered || this.data
   var arr = list.slice(from ,to)
   var fragment = this.createFragment(arr)
   this.parentNode.appendChild(fragment)
@@ -152,7 +152,11 @@ ListRender.prototype.filterData = function (field, val) {
   var arr = this.filtered = this.data.filter(fn)
   var l = arr.length
   if (l === this.data.length) this.filtered = null
-  this.renderRange(0, this.limit)
+  if (this.perpage) {
+    this.select(0)
+  } else {
+    this.renderRange(0, this.limit)
+  }
   return l
 }
 
@@ -390,7 +394,8 @@ ListRender.prototype.createFragment = function (arr) {
 }
 
 /**
- * Select page by page number
+ * Select page by page number,
+ * rerender even if page number not change, eg: filter
  *
  * @param  {Number}  n
  * @api public
