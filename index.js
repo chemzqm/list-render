@@ -114,6 +114,7 @@ ListRender.prototype.renderRange = function (start, end) {
   this.curr= end = Math.min(list.length, end)
   var arr = list.slice(start, end)
   if (arr.length === 0) {
+    this.onchange()
     return this.empty(true)
   }
   this.empty(false)
