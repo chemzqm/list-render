@@ -1,3 +1,6 @@
+0.0.7
+* call onchange when empty
+
 0.0.6
 * make filter works with pagin
 
