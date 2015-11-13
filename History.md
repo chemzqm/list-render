@@ -1,3 +1,6 @@
+0.0.6
+* make filter works with pagin
+
 0.0.5
 * make sort works with paging
 
