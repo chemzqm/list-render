@@ -309,6 +309,25 @@ describe('.filterData(field, val|fn)', function() {
       assert.equal(id, arr[i]._id)
     }
   })
+
+  it('should works with paging', function () {
+    list = List(template, parentNode, {
+      perpage: 5
+    })
+    list.setData(USERS)
+    function filter(u) {
+      return u.age > 10 && u.age < 30
+    }
+    list.select(1)
+    var arr = USERS.filter(filter)
+    list.filterData(filter)
+    assert.equal(getRenderedCount(), 5)
+    assert.equal(list.curpage, 0)
+    for (var i = 0 ; i < 5; i = i + 1) {
+      var id = getValue(parentNode.children[i], 'id')
+      assert.equal(id, arr[i]._id)
+    }
+  })
 })
 
 describe('.sortData()', function() {
