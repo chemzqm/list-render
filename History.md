@@ -1,3 +1,6 @@
+0.0.11
+* fix splice remove other reactives
+
 0.0.10
 * add method maxMoreCount
 
