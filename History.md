@@ -1,3 +1,6 @@
+0.0.8
+* more works with perpage
+
 0.0.7
 * call onchange when empty
 
