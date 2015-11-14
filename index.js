@@ -61,22 +61,42 @@ ListRender.prototype.setData = function (array) {
  * @api public
  */
 ListRender.prototype.more = function (max) {
+  if (this.limit === Infinity) return false
+  var d = this.maxMoreCount()
+  if (d === 0) return false //no more items could render
   var list = this.filtered || this.data
-  var l = list.length
-  if (this.curr >= l) return false
-  if (this.perpage) {
-    var c = this.reactives.length
-    if (c >= this.perpage) return false
-    max = Math.min(max, this.perpage - c)
-  }
   var from = this.curr
-  var to = Math.min(from + max, l)
-  this.curr = to
+  var to = from + Math.min(max, d)
   var arr = list.slice(from ,to)
   var fragment = this.createFragment(arr)
   this.parentNode.appendChild(fragment)
+  this.curr = to
   this.onchange()
   return true
+}
+
+/**
+ * The max count of items can be rendered by more
+ *
+ * @return {number}
+ * @api public
+ */
+ListRender.prototype.maxMoreCount = function () {
+  // filter
+  var list = this.filtered || this.data
+  var l = list.length
+  var perpage = this.perpage
+  // no more data
+  if (this.curr >= l) return 0
+  var still = l - this.curr
+  // paging
+  if (perpage) {
+    var c = this.reactives.length
+    // page is full
+    if (c >= perpage) return 0
+    return Math.min(perpage - c, still)
+  }
+  return still
 }
 /**
  * Append more data and render them, no refresh
