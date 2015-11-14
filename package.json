@@ -47,7 +47,7 @@
   "dependencies": {
     "domify": "^1.4.0",
     "model-component": "^1.1.6",
-    "reactive-lite": "^0.4.3",
+    "reactive-lite": "^0.5.0",
     "uid": "0.0.2"
   },
   "browser": {
