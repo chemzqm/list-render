@@ -373,7 +373,7 @@ ListRender.prototype.createReactive = function (obj) {
   // remove from list
   reactive.on('remove', function () {
     var i = list.indexOf(reactive)
-    list.splice(i)
+    list.splice(i, 1)
   })
   return reactive
 }
