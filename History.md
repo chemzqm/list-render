@@ -1,3 +1,9 @@
+0.0.10
+* add method maxMoreCount
+
+0.0.9
+* update deps
+
 0.0.8
 * more works with perpage
 
