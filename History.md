@@ -1,3 +1,6 @@
+0.0.12
+* fix onchange called twice when call empty(true)
+
 0.0.11
 * fix splice remove other reactives
 

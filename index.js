@@ -267,7 +267,6 @@ ListRender.prototype.empty = function (show) {
   if (!el) return
   if (show) {
     this.parentNode.appendChild(el)
-    this.onchange()
   } else if (el.parentNode) {
     this.parentNode.removeChild(el)
   }
