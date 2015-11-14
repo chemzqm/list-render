@@ -73,7 +73,7 @@ list.setData(users)
 
 ### .findModel(el)
 
-  Find a specific model instance related by element, useful for event delegate
+  Find a specific [model instance](https://github.com/chemzqm/model) related by element, useful for event delegate
 
 ### .remove()
 
