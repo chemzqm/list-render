@@ -1,6 +1,6 @@
 {
   "name": "list-render",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "low level reactive list component",
   "main": "index.js",
   "scripts": {
