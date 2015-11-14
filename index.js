@@ -139,8 +139,9 @@ ListRender.prototype.renderRange = function (start, end) {
   this.curr= end = Math.min(list.length, end)
   var arr = list.slice(start, end)
   if (arr.length === 0) {
+    this.empty(true)
     this.onchange()
-    return this.empty(true)
+    return
   }
   this.empty(false)
   var fragment = this.createFragment(arr)
