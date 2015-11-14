@@ -64,6 +64,11 @@ ListRender.prototype.more = function (max) {
   var list = this.filtered || this.data
   var l = list.length
   if (this.curr >= l) return false
+  if (this.perpage) {
+    var c = this.reactives.length
+    if (c >= this.perpage) return false
+    max = Math.min(max, this.perpage - c)
+  }
   var from = this.curr
   var to = Math.min(from + max, l)
   this.curr = to

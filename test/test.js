@@ -112,6 +112,21 @@ describe('.more(max)', function () {
     m = list.more(5)
     assert.equal(m, false)
   })
+
+  it('should not render more than perpage', function () {
+    list = List(template, parentNode, {
+      limit: 5,
+      perpage: 10
+    })
+    list.setData(USERS)
+    assert.equal(getRenderedCount(), 5)
+    var m = list.more(10)
+    assert.equal(getRenderedCount(), 10)
+    assert.equal(m, true)
+    m = list.more(10)
+    assert.equal(m, false)
+  })
+
 })
 
 describe('.appendData(arr)', function() {
