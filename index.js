@@ -325,7 +325,6 @@ ListRender.prototype.appendRemove = function (model, reactive) {
     self.curr = Math.max(0, self.curr - 1)
     reactive.remove()
     self.onchange(true)
-    self.more(1)
   }
   if (orig && typeof orig !== 'function') throw new TypeError('remove is not a function on model')
   if (!orig) {
