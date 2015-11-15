@@ -1,8 +1,7 @@
-<<<<<<< HEAD
+0.0.14
+* no more called on reactive remove
+
 0.0.13
-=======
-0.0.12
->>>>>>> a85731056adbe774a081bf145b4b1a9c7d8119e2
 * fix onchange called twice when call empty(true)
 
 0.0.11
