@@ -4,8 +4,7 @@
 [![Dependency Status](https://david-dm.org/chemzqm/list-render.svg)](https://david-dm.org/chemzqm/list-render)
 [![Coverage Status](https://coveralls.io/repos/chemzqm/list-render/badge.svg?branch=master&service=github)](https://coveralls.io/github/chemzqm/list-render?branch=master)
 
-  Basic list view for high level component use,(eg: [more-list](), [exgrid]()), not works right now
-  :disappointed:
+  Basic list view for high level component use,(eg: [mobile-list](https://github.com/chemzqm/mobile-list), [exgrid]()),😀
 
   This component does not contain any event or loading method, but limited for dom operation.
 
