@@ -1,3 +1,6 @@
+0.1.0
+* use this.template instead of this.el
+
 0.0.14
 * no more called on reactive remove
 
