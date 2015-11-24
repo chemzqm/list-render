@@ -12,7 +12,7 @@
 
 ``` js
 var List =require('list-render')
-var list = new List(el, parentNode, {
+var list = new List(template, parentNode, {
   limit: 10,
   delegate: {}, // for reactive
   bindings: {},// for reactive
@@ -24,9 +24,9 @@ list.setData(users)
 
 ## API
 
-### ListRender(el, parentNode, [option])
+### ListRender(template, parentNode, [option])
 
-* `el` repeat element or (template string) for rendering
+* `template` repeat element or (template string) for rendering
 * `parentNode` element for list element to append to
 * `option` optional config
 * `option.delegate` delegate object for [reactive]()

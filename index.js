@@ -7,7 +7,7 @@ var body = document.body
 /**
  * Cteate ListRender
  *
- * `el` repeat element or (template string) for rendering
+ * `template` repeat element or (template string) for rendering
  * `parentNode` element for list element to append to
  * `option` optional config obj
  * `option.delegate` delegate object for [reactive]
@@ -18,14 +18,14 @@ var body = document.body
  * `option.perpage` the limit number for paging, should >= limit
  * `option.empty` String or Element rendered in parentNode when internal data list is empty
  *
- * @param  {Element}  el
+ * @param  {Element}  template
  * @param {Element} parentNode
  * @param {Object} option
  * @api public
  */
-function ListRender(el, parentNode, option) {
-  if (!(this instanceof ListRender)) return new ListRender(el, parentNode, option)
-  if (typeof el === 'string') el = domify(el)
+function ListRender(template, parentNode, option) {
+  if (!(this instanceof ListRender)) return new ListRender(template, parentNode, option)
+  if (typeof template === 'string') template = domify(template)
   option = option || {}
   var empty = option.empty
   if (empty) {
@@ -35,7 +35,7 @@ function ListRender(el, parentNode, option) {
   this.curpage = 0
   this.curr = 0
   this.parentNode = parentNode
-  this.el = el
+  this.template = template
   this.reactives = []
   this.data = []
   assign(this, option)
@@ -306,7 +306,7 @@ ListRender.prototype.createReactiveConfig = function (obj) {
     bindings: this.bindings,
     filters: this.filters
   }
-  return Reactive.generateConfig(this.el, model, opt)
+  return Reactive.generateConfig(this.template, model, opt)
 }
 
 /**
@@ -349,7 +349,7 @@ ListRender.prototype.appendRemove = function (model, reactive) {
  * @api private
  */
 ListRender.prototype.createReactive = function (obj) {
-  var el = this.el.cloneNode(true)
+  var el = this.template.cloneNode(true)
   var model = this.model(obj)
   var id
   if (this.primaryKey == null) {
