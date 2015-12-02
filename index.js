@@ -299,8 +299,7 @@ ListRender.prototype.createReactiveConfig = function (obj) {
     var clz = this.model = createModelClass(Object.keys(obj))
     model = clz(obj)
   }
-  this.primaryKey = obj.hasOwnProperty('id') ? 'id' :
-                    obj.hasOwnProperty('_id') ? '_id': null
+  this.primaryKey = obj.hasOwnProperty('id') ? 'id' : '_id'
   var opt = {
     delegate: this.delegate,
     bindings: this.bindings,
@@ -351,12 +350,10 @@ ListRender.prototype.appendRemove = function (model, reactive) {
 ListRender.prototype.createReactive = function (obj) {
   var el = this.template.cloneNode(true)
   var model = this.model(obj)
-  var id
-  if (this.primaryKey == null) {
-    this.primaryKey = '_id'
-    id = obj[this.primaryKey] = uid(10)
-  } else {
-    id = obj[this.primaryKey]
+  var id = obj[this.primaryKey || '_id']
+  if (!id) {
+    id = uid(10)
+    obj[this.primaryKey] = id
   }
   var opt = {
     delegate: this.delegate,
