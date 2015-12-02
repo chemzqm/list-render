@@ -1,3 +1,6 @@
+0.1.2
+* fix primaryKey generate
+
 0.1.0
 * use this.template instead of this.el
 
