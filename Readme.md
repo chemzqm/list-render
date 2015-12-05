@@ -4,7 +4,8 @@
 [![Dependency Status](https://david-dm.org/chemzqm/list-render.svg)](https://david-dm.org/chemzqm/list-render)
 [![Coverage Status](https://coveralls.io/repos/chemzqm/list-render/badge.svg?branch=master&service=github)](https://coveralls.io/github/chemzqm/list-render?branch=master)
 
-  Basic list view for high level component use,(eg: [mobile-list](https://github.com/chemzqm/mobile-list), [exgrid]()),😀
+  Basic list view that use [chemzqm/model](https://github.com/chemzqm/model) and [chemzqm/reactive-lite](https://github.com/chemzqm/reactive-lite)
+  for high level component use,(eg: [mobile-list](https://github.com/chemzqm/mobile-list), [exgrid](https://github.com/chemzqm/exgrid)),😀
 
   This component does not contain any event or loading method, but limited for dom operation.
 
@@ -33,7 +34,7 @@ list.setData(users)
 * `option.bindings` bindings object for [reactive]()
 * `option.filters` filters object for [reactive]()
 * `option.model` [model]() class used for generate model
-* `option.limit` the limit number for render when `setData()` (default no limit)
+* `option.limit` the limit number for render when `setData()` (default Infinite)
 * `option.perpage` used for paging should >= option.limit
 * `option.empty` String or Element rendered in parentNode when internal data list is empty
 
@@ -79,6 +80,8 @@ list.setData(users)
   Remove the list elements, unbind all reactives and models created inside.
 
 ### .select(n)
+
+  Render page `n`, expect perpage option specified.
 
 ### model.remove()
 
