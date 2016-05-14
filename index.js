@@ -389,6 +389,27 @@ ListRender.prototype.removeDataById = function (id) {
   }
 }
 
+/**
+ * React model change
+ *
+ * @public
+ * @param {Object} attrs plain object of model attrs
+ * @returns {undefined}
+ */
+ListRender.prototype.react = function (attrs) {
+  var pk = this.primaryKey || '_id'
+  if (!attrs.hasOwnProperty(pk) || attrs[pk] == null) throw new Error('primaryKey [' + pk + '] not found on attrs')
+  var id = attrs[pk]
+  var model = this.model(attrs)
+  for (var i = 0, l = this.reactives.length; i < l; i++) {
+    var r = this.reactives[i]
+    if (r.id == id) {
+      r.bind(model)
+    }
+  }
+  //nothing happen if not found
+}
+
 function removeItem(arr, key, val) {
   for (var i = arr.length - 1; i >= 0; i--) {
     var v = arr[i]

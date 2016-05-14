@@ -46,6 +46,9 @@ list.setData(users)
 
   Render more internal data limit by max, return `false` if no more data to render
 
+### .react(attrs)
+
+  React model change with `attrs`, `attrs` must contain primaryKey.
 
 ### .appendData(array)
 

@@ -692,6 +692,20 @@ describe('.appendRemove()', function() {
   })
 })
 
+describe('react()', function() {
+  it('should react model changes', function () {
+    var attrs = USERS[0]
+    var temp = '<li>{name}</li>'
+    list = List(temp, parentNode)
+    list.setData(USERS.slice(0, 2))
+    var li = parentNode.children[1]
+    assert.equal(li.textContent, USERS[1].name)
+    attrs.name = 'new name'
+    list.react(attrs)
+    assert.equal(parentNode.children[0].textContent, 'new name')
+  })
+})
+
 describe('Reactive', function () {
   it('should reactive text-interpolation', function () {
     var temp = '<li>{name}</li>'
