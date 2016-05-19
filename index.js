@@ -49,6 +49,7 @@ function ListRender(template, parentNode, option) {
  * @api public
  */
 ListRender.prototype.setData = function (array) {
+  if (this._removed) return
   this.data = array.slice()
   this.renderRange(0, this.limit)
 }
