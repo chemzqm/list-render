@@ -106,10 +106,12 @@ ListRender.prototype.maxMoreCount = function () {
  * @api public
  */
 ListRender.prototype.appendData = function (array) {
+  if (array.length == 0) return
   this.data = this.data.concat(array)
   var fragment = this.createFragment(array)
   this.parentNode.appendChild(fragment)
   this.curr = this.curr + array.length
+  this.empty(false)
   this.onchange()
 }
 /**
@@ -119,10 +121,12 @@ ListRender.prototype.appendData = function (array) {
  * @api public
  */
 ListRender.prototype.prependData = function (array) {
+  if (array.length == 0) return
   this.data = array.concat(this.data)
   var fragment = this.createFragment(array)
   prepend(this.parentNode, fragment)
   this.curr = this.curr + array.length
+  this.empty(false)
   this.onchange()
 }
 
