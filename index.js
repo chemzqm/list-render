@@ -240,7 +240,7 @@ ListRender.prototype.sortData = function (field, dir, method) {
  * @api public
  */
 ListRender.prototype.findModel = function (el) {
-  let id = /^(string|number)$/.test(typeof el) ? el : null
+  var id = /^(string|number)$/.test(typeof el) ? el : null
   if (el.nodeType) {
     do {
       if (el.parentNode === this.parentNode) break
