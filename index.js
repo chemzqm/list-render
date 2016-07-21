@@ -235,19 +235,23 @@ ListRender.prototype.sortData = function (field, dir, method) {
 /**
  * Find a specific model instance related by element, useful for event delegate
  *
- * @param  {Element}  el
+ * @param  {Element|Number}  el
  * @return {reactive}
  * @api public
  */
 ListRender.prototype.findModel = function (el) {
-  do {
-    if (el.parentNode === this.parentNode) break
-    if (el === body) return null
-    el = el.parentNode
-  } while (el.parentNode);
+  let id = /^(string|number)$/.test(typeof el) ? el : null
+  if (el.nodeType) {
+    do {
+      if (el.parentNode === this.parentNode) break
+      if (el === body) return null
+      el = el.parentNode
+    } while (el.parentNode)
+  }
   for (var i = this.reactives.length - 1; i >= 0; i--) {
-    var r = this.reactives[i];
-    if (r.el === el) return r.model;
+    var r = this.reactives[i]
+    if (id && r.model[this.primaryKey] == id) return r.model
+    if (id == null && r.el === el) return r.model
   }
   return null
 }

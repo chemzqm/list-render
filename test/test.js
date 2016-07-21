@@ -538,6 +538,14 @@ describe('.findModel(el)', function() {
     var model = list.findModel(el)
     assert.equal(model._id, user._id)
   })
+
+  it('should find model by id', function () {
+    list = List(template, parentNode)
+    list.setData(USERS)
+    var id = parentNode.firstChild.id
+    var model = list.findModel(id)
+    assert.equal(model._id, id)
+  })
 })
 
 describe('.remove()', function() {
